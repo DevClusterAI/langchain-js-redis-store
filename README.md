@@ -2,10 +2,12 @@
 
 A Redis implementation of the `BaseStore` interface from LangChain for JavaScript/TypeScript. This allows you to use Redis as a key-value store for various LangChain components, including embedding caches.
 
+[![npm version](https://img.shields.io/npm/v/@devclusterai/langchain-js-redis-store.svg)](https://www.npmjs.com/package/@devclusterai/langchain-js-redis-store)
+
 ## Installation
 
 ```bash
-npm install redis_mem
+npm install @devclusterai/langchain-js-redis-store
 ```
 
 ## Usage
@@ -13,7 +15,7 @@ npm install redis_mem
 ### Basic Usage
 
 ```javascript
-const { RedisStore } = require("redis_mem");
+const { RedisStore } = require("@devclusterai/langchain-js-redis-store");
 
 // Create a new Redis store
 const redisStore = new RedisStore({
@@ -42,53 +44,6 @@ for await (const key of redisStore.yieldKeys()) {
 
 // Close the connection when done
 await redisStore.close();
-```
-
-### TypeScript Usage
-
-```typescript
-import { RedisStore } from "redis_mem";
-
-const redisStore = new RedisStore({
-  redisUrl: "redis://localhost:6379",
-  namespace: "my-app" 
-});
-
-// Same methods as above, but with TypeScript type safety
-```
-
-### Using with CacheBackedEmbeddings
-
-One of the most common uses for this store is to cache embeddings to avoid recomputing them:
-
-```typescript
-import { RedisStore } from "redis_mem";
-import { OpenAIEmbeddings } from "@langchain/openai";
-import { CacheBackedEmbeddings } from "@langchain/community/embeddings/cache_backed";
-
-// Create a Redis store for caching
-const redisStore = new RedisStore({
-  redisUrl: "redis://localhost:6379",
-  namespace: "embeddings-cache"
-});
-
-// Underlying embeddings model
-const underlyingEmbeddings = new OpenAIEmbeddings();
-
-// Create cache-backed embeddings
-const embeddings = CacheBackedEmbeddings.fromBytesStore(
-  underlyingEmbeddings,
-  redisStore,
-  {
-    namespace: underlyingEmbeddings.modelName
-  }
-);
-
-// Use as regular embeddings - results will be cached in Redis
-const vectors = await embeddings.embedDocuments([
-  "Hello world",
-  "LangChain is awesome"
-]);
 ```
 
 ## Configuration

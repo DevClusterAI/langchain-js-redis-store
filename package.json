@@ -1,6 +1,6 @@
 {
-  "name": "redis_mem",
-  "version": "1.0.0",
+  "name": "@devclusterai/langchain-js-redis-store",
+  "version": "0.0.1",
   "description": "Redis storage implementation for LangChain",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -19,7 +19,7 @@
     "cache"
   ],
   "author": "Pavlo Ivashchenko",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@langchain/community": "^0.0.34",
     "@langchain/core": "^0.1.48",
@@ -30,5 +30,16 @@
     "@types/ioredis": "^5.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevClusterAI/langchain-js-redis-store.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DevClusterAI/langchain-js-redis-store/issues"
+  },
+  "homepage": "https://github.com/DevClusterAI/langchain-js-redis-store#readme"
 }
