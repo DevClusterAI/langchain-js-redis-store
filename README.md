@@ -123,4 +123,4 @@ npm run example:ts
 
 ## License
 
-ISC 
+This project is licensed under the MIT License. 
